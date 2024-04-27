@@ -1,5 +1,5 @@
 import {StyleSheet} from "react-native";
-import {colors} from "../../constants/colors";
+import {COLORS} from "../../constants/colors";
 
 const styles = StyleSheet.create({
     container: {
@@ -19,21 +19,21 @@ const styles = StyleSheet.create({
         height: 280,
         borderTopLeftRadius:40,
         borderTopRightRadius:40,
-        // backgroundColor: colors.PURPLE,
+        // backgroundColor: COLORS.PURPLE,
         justifyContent: 'space-evenly',
         paddingHorizontal:40,
     },
     welcomeText:{
         fontSize: 36,
         fontWeight: 'bold',
-        color: colors.WHITE,
+        color: COLORS.WHITE,
         // textAlign: "justify"
 
     },
     subTitle:{
         fontSize: 20,
         fontWeight: 'normal',
-        color: colors.WHITE,
+        color: COLORS.WHITE,
         lineHeight: 28,
         paddingEnd: 20,
     },

@@ -1,12 +1,16 @@
-export const colors = {
+export const COLORS = {
     PURPLE: '#CB98EB',
+    PURPLE_66: '#D195EE',
     WHITE: '#FFFFFF',
     GRAY: "#635A8F",
+    BLUE: '#3B21B2',
+    TRANSPARENT: 'transparent',
 };
 
-export const COLORS = [
+export const MAIN_GRADIANT_COLORS = [
     'rgba(59, 33, 183, 1)',
     'rgba(97, 63, 195, 1)',
+    // 'rgba(103, 80, 195, 1)', //extra
     // 'rgba(100, 68, 200, 1)',
     // 'rgba(139, 100, 218, 1)',
     'rgba(145, 104, 220, 1)',
@@ -25,4 +29,14 @@ export const COLORS = [
     'rgba(207, 191, 217, 1)',
     'rgba(206, 203, 211, 1)'
 
+]
+
+export const BOTTOM_GRADIANT_COLORS= [
+    {color: '#8C64D5', percent: '100%'},
+    {color: '#000000', percent: '100%' },
+    {color: '#FFFFFF', percent: '100%'},
+    { color: '#000000', percent: '20%' },
+    { color: '#CB98EB', percent: '80%' },
+    { color: '#FEFDF8', percent: '100%' },
+    { color: '#FEFDFB', percent: '100%' },
 ]

@@ -1,36 +1,31 @@
 import {Image, ImageBackground, Text, View} from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import {LinearGradient} from 'expo-linear-gradient';
 import styles from "./styles";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
+import {APP_STRINGS} from "../../constants/strings";
+import {BOTTOM_GRADIANT_COLORS} from "../../constants/colors";
+import {IMAGES} from "../../constants/images";
+import ImageComponent from "../../components/ImageComponent/ImageComponent";
 
-const COLORS= [
-    {color: '#8C64D5', percent: '100%'},
-    {color: '#000000', percent: '100%' },
-    {color: '#FFFFFF', percent: '100%'},
-    { color: '#000000', percent: '20%' },
-    { color: '#CB98EB', percent: '80%' },
-    { color: '#FEFDF8', percent: '100%' },
-    { color: '#FEFDFB', percent: '100%' },
-]
 
 export default function WelcomeScreen({navigation}) {
-   const onPressGetStarted =()=>{
-       navigation.navigate('SignInScreen')
-   }
+    const onPressGetStarted = () => {
+        navigation.navigate('SignInScreen')
+    }
     return (
         <View style={styles.container}>
-            <ImageBackground resizeMode='cover' source={require('../../../assets/images/welcomeScreen.png')} style={styles.backgroundImage}>
-                <LinearGradient colors={COLORS.map(item => item.color)}
-                                locations={COLORS.map(item => parseFloat(item.percent) / 100)}
+            <ImageBackground resizeMode='cover' source={IMAGES.WELCOME_SCREEN}
+                             style={styles.backgroundImage}>
+                <LinearGradient colors={BOTTOM_GRADIANT_COLORS.map(item => item.color)}
+                                locations={BOTTOM_GRADIANT_COLORS.map(item => parseFloat(item.percent) / 100)}
                                 style={styles.bottomContainer}>
-                    <Text style={styles.welcomeText}>Welcome !</Text>
-                    <Text style={styles.subTitle}>Experience a wonderful moment with
+                    <Text style={styles.welcomeText}>{APP_STRINGS.WELCOME}</Text>
+                    <Text style={styles.subTitle}>{APP_STRINGS.EXPERIENCE_A_WONDERFUL_MOMENT_WITH}
                         <View style={styles.logoContainer}>
-                            <Image source={require('../../../assets/images/ciao.png')} style={styles.logoImage}
-                                   resizeMode={'contain'}/>
+                            <ImageComponent source={IMAGES.APP_LOGO} style={styles.logoImage}/>
                         </View>
                     </Text>
-                    <ButtonComponent title="Get Started" onPress={onPressGetStarted} />
+                    <ButtonComponent title={APP_STRINGS.GET_STARTED} onPress={onPressGetStarted}/>
                 </LinearGradient>
             </ImageBackground>
         </View>

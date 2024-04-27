@@ -1,39 +1,58 @@
 import React from 'react';
-import {TouchableOpacity, Text, StyleSheet, Image, View} from 'react-native';
-import { colors } from "../../constants/colors";
+import {TouchableOpacity, Text, StyleSheet, Image, View, TextInput} from 'react-native';
+import {COLORS} from "../../constants/colors";
+import {IMAGES} from "../../constants/images";
 
-const TextInputComponent = ({ title, onPress, inputStyle={} }) => {
+const TextInputComponent = ({placeholder, onPress, containerStyle = {}, isLeftIcon = false}) => {
     return (
-        <TouchableOpacity activeOpacity={0.7}  style={[styles.input,inputStyle]} onPress={onPress}>
-            <Text style={styles.inputText}>{title}</Text>
-            {/*<View style={styles.logoContainer}>*/}
-            {/*    <Image source={require('../../../assets/images/eye-slash.png')} style={styles.image} resizeMode={'contain'} />*/}
-            {/*</View>*/}
+        <TouchableOpacity activeOpacity={0.7} style={[styles.inputContainer, containerStyle]} onPress={onPress}>
+            <View style={styles.textContainer}>
+                <TextInput style={styles.inputText}
+                           placeholder={placeholder}
+                           placeholderTextColor={COLORS.WHITE}
+                           underlineColorAndroid={COLORS.TRANSPARENT}
+                           onChangeText={() => {
+                           }}
+                />
+            </View>
+            {isLeftIcon &&
+                <View style={styles.imageContainer}>
+                    <Image source={IMAGES.EYE_SLASH} style={styles.image}
+                           resizeMode={'contain'}/>
+
+                </View>
+            }
         </TouchableOpacity>
     );
 };
 
 const styles = StyleSheet.create({
-    input: {
-        backgroundColor: colors.GRAY,
-        paddingVertical: 10,
-        paddingHorizontal: 110,
-        borderRadius: 25,
+    inputContainer: {
         alignItems: 'center',
-        // marginVertical: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 30,
+        justifyContent: 'space-around',
+        flexDirection: 'row',
+        marginVertical: 8,
+        borderRadius: 35,
+        borderStyle: 'solid',
+        borderWidth: 3,
+        borderColor: COLORS.WHITE,
+
+    },
+    textContainer: {
+        flex: 1,
     },
     inputText: {
-        color: colors.WHITE,
         fontSize: 22,
         // fontWeight: 'bold',
         // lineHeight: 28
     },
-    imageContainer:{
-        marginRight: 15,
+    imageContainer: {
         width: 24,
         height: 24,
     },
-    image:{
+    image: {
         width: '100%',
         height: '100%',
     },
