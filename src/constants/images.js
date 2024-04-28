@@ -5,4 +5,5 @@ export const IMAGES = {
     GOOGLE: require('../../assets/images/google.png'),
     FACEBOOK: require('../../assets/images/facebook.png'),
     TWITTER: require('../../assets/images/twitter.png'),
+    ARROW_BOTTOM: require('../../assets/images/arrow-bottom.png'),
 };

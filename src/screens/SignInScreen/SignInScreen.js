@@ -3,8 +3,6 @@ import React, {useState} from 'react';
 import {Image, ImageBackground, Text, TouchableOpacity, View} from 'react-native';
 import styles from "./styles";
 import TextInputComponent from "../../components/TextInputComponent/TextInputComponent";
-import {LinearGradient} from "expo-linear-gradient";
-import {MAIN_GRADIANT_COLORS} from "../../constants/colors";
 import {APP_STRINGS} from "../../constants/strings";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 import ImageComponent from "../../components/ImageComponent/ImageComponent";
@@ -13,8 +11,12 @@ import GradientWrapper from "../../components/GradientWrapperComponent/GradientW
 import CheckBoxButton from "../../components/CheckBoxButton/CheckBoxButton";
 
 
-export default function SignInScreen() {
+export default function SignInScreen({navigation}) {
     const [rememberMe, setRememberMe] = useState(false);
+
+    const onPressSingUp = () => {
+        navigation.navigate('SignUpScreen')
+    }
 
     const toggleRememberMe = () => {
         setRememberMe(!rememberMe);
@@ -27,9 +29,9 @@ export default function SignInScreen() {
                     <Image source={require('../../../assets/images/ciao.png')} style={styles.image}
                            resizeMode={'contain'}/>
                 </View>
-                <Text style={styles.signIn}>Sign in</Text>
+                <Text style={styles.signIn}>{APP_STRINGS.SIGN_IN}</Text>
                 <TextInputComponent placeholder={APP_STRINGS.EMAIL_PHONE_NUMBER}/>
-                <TextInputComponent placeholder={APP_STRINGS.PASSWORD} isLeftIcon={true}/>
+                <TextInputComponent placeholder={APP_STRINGS.PASSWORD} isRightIcon={true} iconName={IMAGES.EYE_SLASH}/>
                 <View style={styles.rememberForgotContainer}>
                     <CheckBoxButton isChecked={true} onPress={toggleRememberMe}/>
                     <Text style={styles.rememberMeTextStyle}>{APP_STRINGS.REMEMBER_ME}</Text>
@@ -44,7 +46,9 @@ export default function SignInScreen() {
                 </View>
                 <View style={styles.bottomTextView}>
                     <Text style={styles.dontHaveAccountTextStyle}>{APP_STRINGS.DONT_HAVE_AN_ACCOUNT}</Text>
-                    <Text style={styles.signInLinkStyle}>{APP_STRINGS.SIGN_IN}</Text>
+                    <TouchableOpacity onPress={onPressSingUp}>
+                        <Text style={styles.signInLinkStyle}>{APP_STRINGS.SIGN_UP}</Text>
+                    </TouchableOpacity>
 
                 </View>
             </View>
