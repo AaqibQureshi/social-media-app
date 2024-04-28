@@ -3,21 +3,29 @@ import {TouchableOpacity, Text, StyleSheet, Image, View, TextInput} from 'react-
 import {COLORS} from "../../constants/colors";
 import {IMAGES} from "../../constants/images";
 
-const TextInputComponent = ({placeholder, onPress, containerStyle = {}, isLeftIcon = false}) => {
+const TextInputComponent = ({
+                                placeholder,
+                                onPress,
+                                containerStyle = {},
+                                placeholderStyle = {},
+                                isRightIcon = false,
+                                onChangeText,
+                                iconName,
+                            }) => {
+
     return (
         <TouchableOpacity activeOpacity={0.7} style={[styles.inputContainer, containerStyle]} onPress={onPress}>
-            <View style={styles.textContainer}>
-                <TextInput style={styles.inputText}
-                           placeholder={placeholder}
-                           placeholderTextColor={COLORS.WHITE}
-                           underlineColorAndroid={COLORS.TRANSPARENT}
-                           onChangeText={() => {
-                           }}
-                />
-            </View>
-            {isLeftIcon &&
+            {/*<View style={styles.textContainer}>*/}
+            <TextInput style={[styles.inputText, placeholderStyle]}
+                       placeholder={placeholder}
+                       placeholderTextColor={COLORS.WHITE}
+                       underlineColorAndroid={COLORS.TRANSPARENT}
+                       onChangeText={onChangeText}
+            />
+            {/*</View>*/}
+            {isRightIcon &&
                 <View style={styles.imageContainer}>
-                    <Image source={IMAGES.EYE_SLASH} style={styles.image}
+                    <Image source={iconName} style={styles.image}
                            resizeMode={'contain'}/>
 
                 </View>
@@ -28,10 +36,13 @@ const TextInputComponent = ({placeholder, onPress, containerStyle = {}, isLeftIc
 
 const styles = StyleSheet.create({
     inputContainer: {
+        // flex:1,
+        height: 50,
+        minWidth: 50,
         alignItems: 'center',
-        paddingVertical: 10,
+        paddingVertical: 8,
         paddingHorizontal: 30,
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         flexDirection: 'row',
         marginVertical: 8,
         borderRadius: 35,
@@ -39,14 +50,16 @@ const styles = StyleSheet.create({
         borderWidth: 3,
         borderColor: COLORS.WHITE,
 
+
     },
-    textContainer: {
-        flex: 1,
-    },
+    // textContainer: {
+    //     flex: 1,
+    // },
     inputText: {
-        fontSize: 22,
+        fontSize: 16,
         // fontWeight: 'bold',
-        // lineHeight: 28
+        // lineHeight: 28,
+        // textAlign: 'center',
     },
     imageContainer: {
         width: 24,
