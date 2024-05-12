@@ -9,6 +9,8 @@ import ImageComponent from "../../components/ImageComponent/ImageComponent";
 import {IMAGES} from "../../constants/images";
 import GradientWrapper from "../../components/GradientWrapperComponent/GradientWrapper";
 import CheckBoxButton from "../../components/CheckBoxButton/CheckBoxButton";
+import ButtonBottomComponent from "../../components/ButtonBottomComponent/ButtonBottomComponent";
+import {COLORS} from "../../constants/colors";
 
 
 export default function SignInScreen({navigation}) {
@@ -16,6 +18,9 @@ export default function SignInScreen({navigation}) {
 
     const onPressSingUp = () => {
         navigation.navigate('SignUpScreen')
+    }
+    const onPressForgotPassword = () => {
+        navigation.navigate('ForgotPasswordScreen')
     }
 
     const toggleRememberMe = () => {
@@ -33,11 +38,11 @@ export default function SignInScreen({navigation}) {
                 <TextInputComponent placeholder={APP_STRINGS.EMAIL_PHONE_NUMBER}/>
                 <TextInputComponent placeholder={APP_STRINGS.PASSWORD} isRightIcon={true} iconName={IMAGES.EYE_SLASH}/>
                 <View style={styles.rememberForgotContainer}>
-                    <CheckBoxButton isChecked={true} onPress={toggleRememberMe}/>
+                    <CheckBoxButton isChecked={rememberMe} onPress={toggleRememberMe}/>
                     <Text style={styles.rememberMeTextStyle}>{APP_STRINGS.REMEMBER_ME}</Text>
-                    <Text style={styles.forgotTextStyle}>{APP_STRINGS.FORGOT_PASSWORD}</Text>
+                    <ButtonComponent buttonTextStyle={styles.forgotTextStyle} title={APP_STRINGS.FORGOT_PASSWORD} onPress={onPressForgotPassword} />
                 </View>
-                <ButtonComponent title={APP_STRINGS.SIGN_IN}/>
+                <ButtonBottomComponent title={APP_STRINGS.SIGN_IN}/>
                 <Text style={styles.orSignInTextStyle}>{APP_STRINGS.OR_SIGN_IN_WITH}</Text>
                 <View style={styles.socialIconContainer}>
                     <ImageComponent source={IMAGES.FACEBOOK} style={styles.socialIconStyle}/>
@@ -46,10 +51,8 @@ export default function SignInScreen({navigation}) {
                 </View>
                 <View style={styles.bottomTextView}>
                     <Text style={styles.dontHaveAccountTextStyle}>{APP_STRINGS.DONT_HAVE_AN_ACCOUNT}</Text>
-                    <TouchableOpacity onPress={onPressSingUp}>
-                        <Text style={styles.signInLinkStyle}>{APP_STRINGS.SIGN_UP}</Text>
-                    </TouchableOpacity>
-
+                    <ButtonComponent style={styles.signInLinkStyle} title={APP_STRINGS.SIGN_UP}
+                                     onPress={onPressSingUp} buttonTextStyle={{color:COLORS.BLUE}}/>
                 </View>
             </View>
         </GradientWrapper>

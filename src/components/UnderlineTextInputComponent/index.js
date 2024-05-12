@@ -3,31 +3,33 @@ import {TouchableOpacity, Text, StyleSheet, Image, View, TextInput} from 'react-
 import {COLORS} from "../../constants/colors";
 import {IMAGES} from "../../constants/images";
 
-const TextInputComponent = ({
-                                placeholder,
-                                onPress,
-                                containerStyle = {},
-                                placeholderStyle = {},
-                                isRightIcon = false,
-                                onChangeText,
-                                iconName,
-                            }) => {
+const UnderlineTextInputComponent = ({
+                                         placeholder,
+                                         onPress,
+                                         containerStyle = {},
+                                         placeholderStyle = {},
+                                         isRightIcon = false,
+                                         onChangeText,
+                                         iconName,
+                                         keyboardType='default'
+                                     }) => {
 
     return (
-        <TouchableOpacity activeOpacity={0.7} style={[styles.inputContainer, containerStyle]} onPress={onPress}>
+        <TouchableOpacity activeOpacity={0.7}
+                          style={[styles.inputContainer, containerStyle]} onPress={onPress}>
             {/*<View style={styles.textContainer}>*/}
             <TextInput style={[styles.inputText, placeholderStyle]}
                        placeholder={placeholder}
                        placeholderTextColor={COLORS.WHITE}
                        underlineColorAndroid={COLORS.TRANSPARENT}
                        onChangeText={onChangeText}
+                       keyboardType={keyboardType}
             />
             {/*</View>*/}
             {isRightIcon &&
                 <View style={styles.imageContainer}>
                     <Image source={iconName} style={styles.image}
                            resizeMode={'contain'}/>
-
                 </View>
             }
         </TouchableOpacity>
@@ -40,16 +42,15 @@ const styles = StyleSheet.create({
         height: 50,
         minWidth: 50,
         alignItems: 'center',
-        paddingVertical: 8,
-        paddingHorizontal: 30,
         justifyContent: 'space-between',
+        // paddingVertical: 8,
+        paddingHorizontal: 12,
         flexDirection: 'row',
-        marginBottom: 12,
-        borderRadius: 35,
+        marginVertical: 12,
         borderStyle: 'solid',
-        borderWidth: 3,
-        borderColor: COLORS.WHITE,
-
+        borderBottomWidth: 1.5,
+        borderColor: COLORS.GRAY,
+        // marginHorizontal: 8,
 
     },
     // textContainer: {
@@ -71,4 +72,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default TextInputComponent;
+export default UnderlineTextInputComponent;

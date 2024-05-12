@@ -6,6 +6,7 @@ import {APP_STRINGS} from "../../constants/strings";
 import {BOTTOM_GRADIANT_COLORS} from "../../constants/colors";
 import {IMAGES} from "../../constants/images";
 import ImageComponent from "../../components/ImageComponent/ImageComponent";
+import ButtonBottomComponent from "../../components/ButtonBottomComponent/ButtonBottomComponent";
 
 
 export default function WelcomeScreen({navigation}) {
@@ -25,7 +26,7 @@ export default function WelcomeScreen({navigation}) {
                             <ImageComponent source={IMAGES.APP_LOGO} style={styles.logoImage}/>
                         </View>
                     </Text>
-                    <ButtonComponent title={APP_STRINGS.GET_STARTED} onPress={onPressGetStarted}/>
+                    <ButtonBottomComponent title={APP_STRINGS.GET_STARTED} onPress={onPressGetStarted} />
                 </LinearGradient>
             </ImageBackground>
         </View>

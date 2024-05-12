@@ -9,14 +9,17 @@ import {COLORS} from "../../constants/colors";
 import ButtonComponent from "../../components/ButtonComponent/ButtonComponent";
 import CheckBoxButton from "../../components/CheckBoxButton/CheckBoxButton";
 import {IMAGES} from "../../constants/images";
+import ButtonBottomComponent from "../../components/ButtonBottomComponent/ButtonBottomComponent";
+import Header from "../../components/HeaderComponent/Header";
 
 export default function SignUpScreen({navigation}) {
     const [rememberMe, setRememberMe] = useState(false);
 
-    const onPressSingUp = () => {
-        navigation.navigate('SignUpScreen')
-    }
 
+
+    const onPressSignIn = () => {
+        navigation.navigate('SignInScreen')
+    }
     const toggleRememberMe = () => {
         setRememberMe(!rememberMe);
     };
@@ -24,7 +27,7 @@ export default function SignUpScreen({navigation}) {
     return (
         <GradientWrapper>
             <View style={styles.container}>
-                <Text style={styles.signUpText}>{APP_STRINGS.SIGN_UP}</Text>
+                <Header isBackArrow={false} title={APP_STRINGS.SIGN_UP} headerContainer={styles.signUpText} />
                 <View style={styles.nameInputsView}>
                     <TextInputComponent containerStyle={styles.firstNameInputStyle}
                                         placeholder={APP_STRINGS.FIRST_NAME} iconName={IMAGES.EYE_SLASH}/>
@@ -56,7 +59,7 @@ export default function SignUpScreen({navigation}) {
                     />
                 </View>
                 <View style={styles.agreeTextView}>
-                    <CheckBoxButton/>
+                    <CheckBoxButton isChecked={rememberMe} onPress={toggleRememberMe}/>
                     <Text style={styles.agreeTextStyle}>
                         {APP_STRINGS.I_AGREE_WITH}{' '}
                         <Text style={styles.privacyText}>
@@ -68,8 +71,13 @@ export default function SignUpScreen({navigation}) {
                         </Text>
                     </Text>
                 </View>
-
-                <ButtonComponent title={APP_STRINGS.SIGN_UP}/>
+                <ButtonBottomComponent title={APP_STRINGS.SIGN_UP}/>
+                <View style={styles.alreadyHaveAccountView}>
+                    <Text style={styles.alreadyHaveAccountText}>
+                        {APP_STRINGS.ALREADY_HAVE_AN_ACCOUNT}
+                    </Text>
+                    <ButtonComponent title={APP_STRINGS.SIGN_IN} buttonTextStyle={{color:COLORS.BLUE}} onPress={onPressSignIn} />
+                </View>
             </View>
         </GradientWrapper>
     );

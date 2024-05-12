@@ -6,19 +6,12 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     signUpText: {
-        marginTop: 60,
-        alignSelf: 'flex-start',
         marginHorizontal: 10,
-        marginVertical: 30,
-        fontSize: 30,
-        fontWeight: 'bold',
-        color: COLORS.WHITE
     },
     nameInputsView: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
-
     },
     firstNameInputStyle: {
         width: '45%',
@@ -69,27 +62,36 @@ const styles = StyleSheet.create({
     agreeTextView:{
         flexDirection: 'row',
         alignItems: 'center',
-        marginLeft: 5,
-        marginVertical: 10,
+        marginLeft: 10,
+        marginVertical: 5,
     },
     agreeTextStyle:{
         fontSize: 17,
         color: COLORS.WHITE,
         marginLeft: 10,
-        marginVertical: 5
-
     },
     privacyText:{
         fontSize: 17,
         color: COLORS.BLUE,
-        marginLeft: 10,
-        marginVertical: 5
     },
     policyText:{
         fontSize: 17,
         color: COLORS.BLUE,
-        marginLeft: 10,
-        marginVertical: 5
+    },
+    alreadyHaveAccountView:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginHorizontal: 10,
+        marginVertical: 10,
+    },
+    alreadyHaveAccountText:{
+        fontSize: 17,
+        color: COLORS.WHITE,
+    },
+    signInText:{
+        fontSize: 17,
+        color: COLORS.BLUE,
     },
 });
 
